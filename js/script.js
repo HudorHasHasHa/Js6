@@ -40,6 +40,43 @@ const titleClickHandler = function(event){
   targetArticle.classList.add('active');
 }
 
+const optArticleSelector = '.post',
+  optTitleSelector = '.post-title',
+  optTitleListSelector = '.titles';
+
+function generateTitleLinks(){
+
+  /* remove contents of titleList */
+  const titleList = document.querySelector(optTitleListSelector).innerHTML = '';
+  /* for each article */
+  const articles = document.querySelectorAll(optArticleSelector);
+
+  let html = '';
+
+  for (const article of articles) {
+    /* get the article id */
+    const articleId = article.getAttribute('id');
+    /* find the title element */
+    const articleTitle = article.querySelector(optTitleSelector).innerHTML;
+    /* get the title from the title element */
+
+    /* create HTML of the link */
+    const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
+    console.log(linkHTML);
+
+    /*  Coś tu jest nie tak
+    /* insert link into titleList 
+    titleList.insertAdjacentHTML('afterend' , linkHTML);
+    */
+
+    /* insert link into html variable */
+    html = html + linkHTML;
+  }
+  titleList.innerHTML = html;
+}
+
+generateTitleLinks();
+
 const links = document.querySelectorAll('.titles a');
 
 for(let link of links){
