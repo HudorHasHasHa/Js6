@@ -119,7 +119,41 @@ const generateTags = function(){
 
 generateTags();
 
-
+function tagClickHandler(event){
+  /* prevent default action for this event */
+  event.preventDefault();
+  /* make new constant named "clickedElement" and give it the value of "this" */
+  const clickedElement = this;
+  //console.log(clickedElement);
+  /* make a new constant "href" and read the attribute "href" of the clicked element */
+  const href = clickedElement.getAttribute('href');
+  //console.log(href);
+  /* make a new constant "tag" and extract tag from the "href" constant */
+  //const tag = href.getAttribute('#tag');
+  const tag = href.replace('#tag-', '');
+  //console.log(tag);
+  /* find all tag links with class active */
+  //const activeLinks = document.querySelectorAll('.titles a.active');
+  const activeLinks = document.querySelectorAll('a.active[href^="#tag-"]')
+  //console.log(activeLinks);
+  /* START LOOP: for each active tag link */
+    for (let link of activeLinks) {
+    /* remove class active */
+      link.classList.remove('active');
+  /* END LOOP: for each active tag link */
+  }
+  /* find all tag links with "href" attribute equal to the "href" constant */
+  const tagLinks = document.querySelectorAll('a[href="' + href + '"]');
+  console.log(tagLinks);
+  /* START LOOP: for each found tag link */
+    for (let TagLink of tagLinks) {
+    /* add class active */
+      clickedElement.classList.add('active');
+  /* END LOOP: for each found tag link */
+    }
+  /* execute function "generateTitleLinks" with article selector as argument */
+  generateTitleLinks('[data-tags~="' + tag + '"]');
+}
 
 
 function addClickListenersToTags(){
@@ -143,7 +177,7 @@ const generateAuthors = function(){
   /* START LOOP: for every article: */
   for (const article1 of articles) {
     /* find Authors wrapper */
-    const author = article1.querySelectorAll(optArticleAuthorSelector);
+    const author = article1.querySelector(optArticleAuthorSelector);
     console.log(author);
   /* START LOOP: for every author: */
     /* make html variable with empty string */
@@ -169,7 +203,7 @@ const addClickListenersToAuthors = function(){
   /* START LOOP: for each link */
   for(let link of links){
     /* add tagClickHandler as event listener for that link */
-    link.addEventListener('click', authorClickHandler);
+    //link.addEventListener('click', authorClickHandler);
   /* END LOOP: for each link */
   }
 }
