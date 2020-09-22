@@ -278,7 +278,7 @@ const generateAuthors = function(){
       allAuthors[articleAuthor] = articleAuthor;
       }
 
-    //for (const key in allAuthors) {
+    //.for (const key in allAuthors) {
       /*if(allAuthors[key]==articleAuthor){
         count++;
         console.log(count);
