@@ -175,7 +175,27 @@
           </main>
         </div>
   </div>
-	<script src="js/functions.js"></script>
+  <script id="template-article-link" type="text/x-handlebars-template">
+    <li><a href="#{{ id }}"><span>{{ title }}</span></a></li>
+  </script>
+  <script id="template-article-link2" type="text/x-handlebars-template">
+    <li><a href="#{{ id }}"><span>{{ title }}</span></a></li>
+  </script>
+  <script id="template-article-link3" type="text/x-handlebars-template">
+    <li><a href="#{{ id }}"><span>{{ title }}</span></a></li>
+  </script>
+  <script id="template-tag-cloud-link" type="text/x-handlebars-template">
+    {{#each tags}}
+    <li class="{{className}}"><a href="#"><span>{{ tag }} </span></a>({{count}})</li>
+    {{/each}}
+  </script>
+  <script id="template-authors-cloud-link" type="text/x-handlebars-template">
+    {{#each authors}}
+    <li class="{{className}}"><a href="#"><span>{{ author }}</span></a></li>
+    {{/each}}
+  </script>
+  <script src="js/functions.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
   <script src="js/script.js"></script>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
